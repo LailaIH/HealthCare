@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class Meeting extends Controller
 {
 
+    // patients schedules with doctors (pending,finished or rejected)
     public function mySchedules(){
         $user = auth()->user();
         $patient = $user->patient;
@@ -18,6 +19,7 @@ class Meeting extends Controller
         return view('patientsPanel.mySchedules',compact('schedules'));
     }
     
+    // to request a meeting with a certain doctor
     public function showRequestMeetingView($id){
         $doctor = Doctor::find($id);
         if($doctor){
@@ -56,6 +58,7 @@ class Meeting extends Controller
         return redirect()->route('patientsPanel.mySchedules')->with('success','request was send successfully');
     }
 
+    // delete pending meeting
     public function deleteMeeting($id){
         $schedule = DoctorPatient::findOrFail($id);
         $schedule->delete();

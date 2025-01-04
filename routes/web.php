@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorPatientController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Patients\ExploreCategories;
 use App\Http\Controllers\Patients\Meeting;
@@ -114,9 +115,11 @@ Route::get('/doctor-panel', function(){
         Route::get('/admin-cp/doctors/edit/{id}', [DoctorController::class, 'edit'])->name('doctors.edit');
         Route::put('/admin-cp/doctors/update/{id}', [DoctorController::class, 'update'])->name('doctors.update');
 
-        // Route::get('/admin-cp/patients/request/to/register', [PatientController::class, 'registerRequestView'])->name('patients.registerRequestView');
-        // Route::post('/admin-cp/patients/send/request/to/register', [PatientController::class, 'registerRequest'])->name('patients.registerRequest');
 
+        //doctors-patient meetings
+        Route::get('/admin-cp/pending/meetings', [DoctorPatientController::class, 'pendingMeetings'])->name('meetings.pending');
+        Route::get('/admin-cp/approved/meetings', [DoctorPatientController::class, 'approvedMeetings'])->name('meetings.approved');
+        Route::get('/admin-cp/rejected/meetings', [DoctorPatientController::class, 'rejectedMeetings'])->name('meetings.rejected');
 
 
 

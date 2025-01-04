@@ -129,6 +129,34 @@
                     </div>
 
 
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr6" aria-expanded="false" aria-controls="collapseDashboardsr6">
+                        <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
+                       Doctor-Patient Meetings
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr6" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                 
+
+                            <a class="nav-link" href="{{route('meetings.pending')}}">
+                                Pending meetings
+
+                            </a>
+
+                            <a class="nav-link" href="{{route('meetings.approved')}}">
+                                Approved meetings
+
+                            </a>                  
+                            <a class="nav-link" href="{{route('meetings.rejected')}}">
+                                Rejected meetings
+
+                            </a>
+               
+
+                        </nav>
+                    </div>
+
+
         
 
 

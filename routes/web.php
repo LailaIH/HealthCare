@@ -71,6 +71,7 @@ Route::get('/doctor-panel', function(){
             return view('admin');
         });
 
+        
         //patients
         Route::get('/admin-cp/patients', [PatientController::class, 'index'])->name('patients.index');
         Route::get('/admin-cp/patients/create', [PatientController::class, 'create'])->name('patients.create');
@@ -92,6 +93,7 @@ Route::get('/doctor-panel', function(){
         Route::get('/admin-cp/set/password/{id}', [AdminController::class, 'showSetPatientPasswordView'])->name('admins.showSetPatientPasswordView');
         Route::post('/admin-cp/accept/and/set/{id}', [AdminController::class, 'acceptPatientAndSetPassword'])->name('admins.acceptPatientAndSetPassword');
 
+
         // categories
         Route::get('/admin-cp/categories', [CategoryController::class, 'index'])->name('categories.index');
         Route::get('/admin-cp/categories/create', [CategoryController::class, 'create'])->name('categories.create');
@@ -100,12 +102,14 @@ Route::get('/doctor-panel', function(){
         Route::put('/admin-cp/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
         Route::get('/admin-cp/categories/show/specialty/{id}', [CategoryController::class, 'showSpecialties'])->name('categories.showSpecialties');
 
+
         // specialties
         Route::get('/admin-cp/specialties/create', [SpecialtyController::class, 'create'])->name('specialties.create');
         Route::post('/admin-cp/specialties/store', [SpecialtyController::class, 'store'])->name('specialties.store');
         Route::get('/admin-cp/specialties/edit/{id}', [SpecialtyController::class, 'edit'])->name('specialties.edit');
         Route::put('/admin-cp/specialties/update/{id}', [SpecialtyController::class, 'update'])->name('specialties.update');
         Route::get('/admin-cp/specialties/show/doctors/{id}', [SpecialtyController::class, 'showDoctors'])->name('specialties.showDoctors');
+
 
         //doctors
         Route::get('/admin-cp/doctors', [DoctorController::class, 'index'])->name('doctors.index');
@@ -115,6 +119,7 @@ Route::get('/doctor-panel', function(){
         Route::put('/admin-cp/doctors/update/{id}', [DoctorController::class, 'update'])->name('doctors.update');
 
 
+        //
         // Route::get('/admin-cp/patients/request/to/register', [PatientController::class, 'registerRequestView'])->name('patients.registerRequestView');
         // Route::post('/admin-cp/patients/send/request/to/register', [PatientController::class, 'registerRequest'])->name('patients.registerRequest');
 

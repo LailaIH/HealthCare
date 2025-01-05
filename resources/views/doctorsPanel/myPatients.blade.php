@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients rejected meeting requests list
+                    <div class="card-header">Patients approved meeting requests list
                    
                     </div>
                         @if (session('success'))
@@ -48,7 +48,8 @@
                                         <th>Date</th>
                                         <th>Time</th>
                                         
-                                     
+                                        
+                                        <th>Patient's Document</th>
                                         
 
                                     </tr>
@@ -68,10 +69,18 @@
 
                                             
 
-                                            
-                                          
+                                           
+                                        
 
                                         
+                                        
+                                    <td>
+                                        @if(isset($request->patient->documents))
+                                            <a href="{{ route('doctorsPanel.showDocuments', ['id' => $request->patient->id]) }}?{{ \Carbon\Carbon::now()->timestamp }}" class="btn btn-success btn-sm text-white" target="_blank">Download Document</a>
+                                        @else
+                                        No document
+                                        @endif
+                                    </td>
 
                                         </tr>
                                     @endforeach
@@ -100,4 +109,5 @@
 
 
 @endsection
+
 

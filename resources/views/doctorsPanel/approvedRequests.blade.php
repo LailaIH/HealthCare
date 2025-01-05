@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients rejected meeting requests list
+                    <div class="card-header">Patients approved meeting requests list
                    
                     </div>
                         @if (session('success'))
@@ -48,7 +48,8 @@
                                         <th>Date</th>
                                         <th>Time</th>
                                         
-                                     
+                                        
+                                        <th></th>
                                         
 
                                     </tr>
@@ -68,10 +69,24 @@
 
                                             
 
-                                            
-                                          
+                                           
+                                        
 
                                         
+                                        
+                                       
+
+                                        <td>
+                                           <form method="get" action="{{route('doctorsPanel.showAddTreatments',$request->id)}}">
+                                            @csrf 
+                                            
+                                            <button type="submit" class="btn btn-primary btn-sm">Add Treatment and Invoice</button>
+                                           </form>
+                                        
+
+                                        
+                                        
+                                        </td>
 
                                         </tr>
                                     @endforeach
@@ -100,4 +115,5 @@
 
 
 @endsection
+
 

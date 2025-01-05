@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorPatientController;
+use App\Http\Controllers\Doctors\PatientRequests;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Patients\ExploreCategories;
 use App\Http\Controllers\Patients\Meeting;
@@ -32,9 +33,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // doctor routes 
-Route::get('/doctor-panel', function(){
+Route::middleware(['auth'])->group(function () {
 
-    return view('doctor-main');
+    Route::get('/doctor-panel', function(){
+
+        return view('doctor-main');
+    });
+
+    Route::get('/doctor-cp/pendingRequests', [PatientRequests::class, 'pendingRequests'])->name('doctorsPanel.pendingRequests');
+    Route::get('/doctor-cp/approvedRequests', [PatientRequests::class, 'approvedRequests'])->name('doctorsPanel.approvedRequests');
+    Route::get('/doctor-cp/rejectedRequests', [PatientRequests::class, 'rejectedRequests'])->name('doctorsPanel.rejectedRequests');
+    Route::get('/doctor-cp/finishedRequests', [PatientRequests::class, 'finishedRequests'])->name('doctorsPanel.finishedRequests');
+    Route::put('/doctor-cp/approveRequest/{id}', [PatientRequests::class, 'approveRequest'])->name('doctorsPanel.accept');
+    Route::put('/doctor-cp/rejectRequest/{id}', [PatientRequests::class, 'rejectRequest'])->name('doctorsPanel.reject');
+    Route::get('/doctor-cp/show/add/treatments/{id}', [PatientRequests::class, 'showAddTreatments'])->name('doctorsPanel.showAddTreatments');
+    Route::post('/doctor-cp/add/treatments/{id}', [PatientRequests::class, 'addTreatmentAndInvoice'])->name('doctorsPanel.addTreatmentAndInvoice');
+    Route::get('/doctor-cp/show/full/treatment/{id}', [PatientRequests::class, 'fullTreatment'])->name('doctorsPanel.fullTreatment');
+    Route::get('/doctor-cp/my-patients', [PatientRequests::class, 'myPatients'])->name('doctorsPanel.myPatients');
+    Route::get('/doctor-cp/patient/docs/{id}', [PatientRequests::class, 'showDocuments'])->name('doctorsPanel.showDocuments');
+
+
+
+
 });
 
 

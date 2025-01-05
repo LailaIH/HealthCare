@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactorry;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,15 +19,19 @@ class DoctorPatient extends Model
         'status',
     ];
 
-  
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
     }
 
-  
     public function patient()
     {
         return $this->belongsTo(Patient::class);
     }
+    
+    public function treatment()
+    {
+        return $this->hasOne(Treatment::class, 'doctor_patient_id');
+    }
 }
+

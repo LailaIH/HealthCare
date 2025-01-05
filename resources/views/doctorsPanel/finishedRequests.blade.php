@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients pending meeting requests list
+                    <div class="card-header">Patients finished meeting requests list
                    
                     </div>
                         @if (session('success'))
@@ -47,9 +47,10 @@
                                         <th>Visiting type</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>Treatment</th>
+                                        <th></th>
                                         
-                                        <th></th>
-                                        <th></th>
+                                     
                                         
 
                                     </tr>
@@ -65,34 +66,26 @@
                                             <td >{{ $request->visit_type }}</td>
                                             <td >{{ $request->date }}</td>
                                             <td >{{ $request->time }}</td>
-
-
-                                            
-
-                                            
                                             <td>
-                                           <form method="post" action="{{route('doctorsPanel.accept',$request->id)}}">
-                                            @csrf 
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-success btn-sm">Accept</button>
-                                           </form>
-                                        
+                                                {{ strlen($request->treatment->treatment) > 16 
+                                                    ? substr($request->treatment->treatment, 0, 16) . '...' 
+                                                    : $request->treatment->treatment }}
+                                            </td>
+
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="{{route('doctorsPanel.fullTreatment',$request->treatment->id)}}">
+                                                    Show full treatment
+                                                </a>
+                                            </td>
+
+
+
+                                            
+
+                                            
+                                          
 
                                         
-                                        
-                                        </td>
-
-                                        <td>
-                                           <form method="post" action="{{route('doctorsPanel.reject',$request->id)}}">
-                                            @csrf 
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                                           </form>
-                                        
-
-                                        
-                                        
-                                        </td>
 
                                         </tr>
                                     @endforeach

@@ -6,26 +6,9 @@
                     <div class="sidenav-menu-heading">Control Panel Pages</div>
 
 
-                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr1" aria-expanded="false" aria-controls="collapseDashboardsr1">
-                        <div class="nav-link-icon"><i class="fas fa-clock"></i></div>
-                        Schedules
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseDashboardsr1" data-parent="#accordionSidenav">
-                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="#">
-                                My Scheduals
+        
 
-                            </a>
-                            <a class="nav-link" href="#">
-                                New Schedual
-
-                            </a>
-
-                        </nav>
-                    </div>
-
-
+                    <!-- new -->
                     <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr2" aria-expanded="false" aria-controls="collapseDashboardsr2">
                         <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                         Requested Appointments
@@ -33,8 +16,8 @@
                     </a>
                     <div class="collapse" id="collapseDashboardsr2" data-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="#">
-                                All Requested Appointments
+                            <a class="nav-link" href="{{route('doctorsPanel.pendingRequests')}}">
+                                Pending Requests
 
                             </a>
                
@@ -44,28 +27,30 @@
 
              
 
-                    <!-- accepted ones that are finished or upcoming -->
 
-                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr3" aria-expanded="false" aria-controls="collapseDashboardsr3">
-                        <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
-                        Patients Appointments
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseDashboardsr3" data-parent="#accordionSidenav">
-                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="{{route('admins.showPendingRegistrationRequests')}}">
-                                All Patients Appointmentss
-
-                            </a>
-               
-
-                        </nav>
-                    </div>
 
 
         
+                    <a class="nav-link" href="{{route('doctorsPanel.approvedRequests')}}">
+                        <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
+                        Accepted meeting requests
+                    </a>
+
+                    <a class="nav-link" href="{{route('doctorsPanel.rejectedRequests')}}">
+                        <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
+                        Rejected meeting requests
+                    </a>
 
 
+                    <a class="nav-link" href="{{route('doctorsPanel.finishedRequests')}}">
+                        <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
+                        Finished meetings
+                    </a>
+
+                    <a class="nav-link" href="{{route('doctorsPanel.myPatients')}}">
+                        <div class="nav-link-icon"><i class="fas fa-hospital-user"></i></div>
+                        My Patients
+                    </a>
 
 
                  

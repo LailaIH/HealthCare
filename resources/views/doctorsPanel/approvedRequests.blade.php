@@ -61,7 +61,7 @@
                                             <td class=" text-black"><b>{{ $request->patient->user->age }}</b></td>
 
 
-                                            <td class=" text-black"><b>{{  isset($request->patient->user->phone)? $patient->phone: 'no phone stored' }}</b></td>
+                                            <td class="text-black"><b>{{ isset($request->patient->user->phone) ? $request->patient->user->phone : 'no phone stored' }}</b></td>
                                             <td >{{ $request->visit_type }}</td>
                                             <td >{{ $request->date }}</td>
                                             <td >{{ $request->time }}</td>
@@ -80,7 +80,7 @@
                                            <form method="get" action="{{route('doctorsPanel.showAddTreatments',$request->id)}}">
                                             @csrf 
                                             
-                                            <button type="submit" class="btn btn-primary btn-sm">Change status to finished</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">Add Treatment and Invoice</button>
                                            </form>
                                         
 

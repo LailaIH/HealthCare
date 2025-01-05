@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients pending meeting requests list
+                    <div class="card-header">Patients approved meeting requests list
                    
                     </div>
                         @if (session('success'))
@@ -48,8 +48,8 @@
                                         <th>Date</th>
                                         <th>Time</th>
                                         
-                                        <th></th>
-                                        <th></th>
+                                        
+                                        <th>Patient's Document</th>
                                         
 
                                     </tr>
@@ -69,30 +69,18 @@
 
                                             
 
-                                            
-                                            <td>
-                                           <form method="post" action="{{route('doctorsPanel.accept',$request->id)}}">
-                                            @csrf 
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-success btn-sm">Accept</button>
-                                           </form>
+                                           
                                         
 
                                         
                                         
-                                        </td>
-
-                                        <td>
-                                           <form method="post" action="{{route('doctorsPanel.reject',$request->id)}}">
-                                            @csrf 
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                                           </form>
-                                        
-
-                                        
-                                        
-                                        </td>
+                                    <td>
+                                        @if(isset($request->patient->documents))
+                                            <a href="{{ route('doctorsPanel.showDocuments', ['id' => $request->patient->id]) }}?{{ \Carbon\Carbon::now()->timestamp }}" class="btn btn-success btn-sm text-white" target="_blank">Download Document</a>
+                                        @else
+                                        No document
+                                        @endif
+                                    </td>
 
                                         </tr>
                                     @endforeach

@@ -88,6 +88,23 @@
                     </div>
 
 
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr399" aria-expanded="false" aria-controls="collapseDashboardsr399">
+                        <div class="nav-link-icon"><i class="fas fa-sign-in-alt"></i></div>
+                        Doctors Registration Requests
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr399" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                            <a class="nav-link" href="{{route('admins.showPendingRegistrationRequestsDoctors')}}">
+                                All Requests
+
+                            </a>
+               
+
+                        </nav>
+                    </div>
+
+
                     <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr4" aria-expanded="false" aria-controls="collapseDashboardsr4">
                         <div class="nav-link-icon"><i class="fas fa-book-medical"></i></div>
                        Medical Categories
@@ -149,6 +166,11 @@
                             </a>                  
                             <a class="nav-link" href="{{route('meetings.rejected')}}">
                                 Rejected meetings
+
+                            </a>
+
+                            <a class="nav-link" href="{{route('meetings.finished')}}">
+                                Finished meetings
 
                             </a>
                

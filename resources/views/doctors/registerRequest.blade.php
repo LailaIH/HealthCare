@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('patients.registerRequest') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('doctors.registerRequest') }}">
                         @csrf
 
                         <!-- Name Input -->
@@ -55,16 +55,15 @@
 
                         <!-- File Upload -->
                         <div class="row mb-3">
-                            <label for="documents" class="col-md-4 col-form-label text-md-end">{{ __('Upload document') }}</label>
+                            <label class="col-md-4 col-form-label text-md-end" for="specialty_id">Choose your specialty</label>
                             <div class="col-md-6">
-                            <label class=" btn btn-primary btn-sm me-3" for="documents">choose file</label>
-                                <input   style="display: none;" type="file" name="documents" id="documents" class="form-control-file @error('documents') is-invalid @enderror" onchange="updateFileName()" required>
-                                <span id="file-name" class="form-text ml-3">No file chosen</span>
-                                @error('documents')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
+                            <select name="specialty_id" id="specialty_id" class="form-control form-control-solid" required>
+                                <option value="" >Select a specialty </option>
+                                @foreach($specialties as $specialty)
+                                  <option value="{{$specialty->id}}">{{$specialty->name}}</option>
+                                @endforeach
+                            </select>
                             </div>
                         </div>
 
@@ -83,15 +82,5 @@
     </div>
 </div>
 
-<script>
-    function updateFileName() {
-        const fileInput = document.getElementById('documents');
-        const fileNameSpan = document.getElementById('file-name');
-        if (fileInput.files.length > 0) {
-            fileNameSpan.textContent = fileInput.files[0].name;
-        } else {
-            fileNameSpan.textContent = "No file chosen";
-        }
-    }
-</script>
+
 @endsection

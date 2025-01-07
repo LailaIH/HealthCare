@@ -92,12 +92,14 @@ class PatientRequests extends Controller
             $meeting->save();
             Treatment::create([
                 'doctor_patient_id'=>$meeting->id,
-                'treatment'=>$request->treatment
+                'treatment'=>$request->treatment,
+                
             ]);
 
             Invoice::create([
                 'user_id'=> $meeting->patient->user->id,
                 'total'=>$request->total,
+                'status'=>'unpaid',
             ]);
 
             $patient = $meeting->patient;

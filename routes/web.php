@@ -7,7 +7,9 @@ use App\Http\Controllers\DoctorPatientController;
 use App\Http\Controllers\Doctors\PatientRequests;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Patients\ExploreCategories;
+use App\Http\Controllers\Patients\Invoices;
 use App\Http\Controllers\Patients\Meeting;
+use App\Http\Controllers\Patients\Profile;
 use App\Http\Controllers\SpecialtyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -65,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/patient-panel', function(){
 
             return view('patient-main');
-        });
+        })->name('patients.panel');;
 
         // categories
         Route::get('/patient-cp/categories', [ExploreCategories::class, 'allCategories'])->name('patientsPanel.allCategories');
@@ -77,6 +79,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/patient-cp/show/request-meeting/view/{id}', [Meeting::class, 'showRequestMeetingView'])->name('patientsPanel.showRequestMeetingView');
         Route::put('/patient-cp/request/meeting/{id}', [Meeting::class, 'requestMeeting'])->name('patientsPanel.requestMeeting');
         Route::delete('/patient-cp/delete/schedule', [Meeting::class, 'deleteMeeting'])->name('patientsPanel.deleteMeeting');
+        Route::get('/patient-cp/full-treatment/{id}', [Meeting::class, 'showTreatment'])->name('meetings.showTreatment');
+
+        //invoices
+        Route::get('/patient-cp/invoices', [Invoices::class, 'myInvoices'])->name('patientsPanel.invoices');
+      
+        //update profile
+        Route::get('/patient-cp/profile', [Profile::class, 'editMyInformation'])->name('patientsPanel.editMyInformation');
+        Route::put('/patient-cp/updateInfo', [Profile::class, 'updateMyInformation'])->name('patientsPanel.updateMyInformation');
 
 });
 
@@ -99,8 +109,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin-cp/patients/edit/{id}', [PatientController::class, 'edit'])->name('patients.edit');
         Route::put('/admin-cp/patients/update/{id}', [PatientController::class, 'update'])->name('patients.update');
 
-        Route::get('/admin-cp/patients/request/to/register', [PatientController::class, 'registerRequestView'])->name('patients.registerRequestView');
-        Route::post('/admin-cp/patients/send/request/to/register', [PatientController::class, 'registerRequest'])->name('patients.registerRequest');
 
 
         //admins
@@ -112,6 +120,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin-cp/pending/requests', [AdminController::class, 'showPendingRegistrationRequests'])->name('admins.showPendingRegistrationRequests');
         Route::get('/admin-cp/set/password/{id}', [AdminController::class, 'showSetPatientPasswordView'])->name('admins.showSetPatientPasswordView');
         Route::post('/admin-cp/accept/and/set/{id}', [AdminController::class, 'acceptPatientAndSetPassword'])->name('admins.acceptPatientAndSetPassword');
+
+        Route::get('/admin-cp/pending/requests/doctors', [AdminController::class, 'showPendingRegistrationRequestsDoctors'])->name('admins.showPendingRegistrationRequestsDoctors');
+        Route::get('/admin-cp/setDoctor/password/{id}', [AdminController::class, 'showSetDoctorPasswordView'])->name('admins.showSetDoctorPasswordView');
+        Route::post('/admin-cp/acceptDoctor/and/set/{id}', [AdminController::class, 'acceptDoctorAndSetPassword'])->name('admins.acceptDoctorAndSetPassword');
 
         // categories
         Route::get('/admin-cp/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -140,8 +152,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin-cp/pending/meetings', [DoctorPatientController::class, 'pendingMeetings'])->name('meetings.pending');
         Route::get('/admin-cp/approved/meetings', [DoctorPatientController::class, 'approvedMeetings'])->name('meetings.approved');
         Route::get('/admin-cp/rejected/meetings', [DoctorPatientController::class, 'rejectedMeetings'])->name('meetings.rejected');
+        Route::get('/admin-cp/finished/meetings', [DoctorPatientController::class, 'finishedMeetings'])->name('meetings.finished');
+        Route::get('/admin-cp/full-treatment/{id}', [DoctorPatientController::class, 'fullTreatment'])->name('meetings.fullTreatment');
 
 
 
 
 });
+
+
+Route::get('/admin-cp/patients/request/to/register', [PatientController::class, 'registerRequestView'])->name('patients.registerRequestView');
+Route::post('/admin-cp/patients/send/request/to/register', [PatientController::class, 'registerRequest'])->name('patients.registerRequest');
+
+Route::get('/admin-cp/doctors/request/to/register', [DoctorController::class, 'registerRequestView'])->name('doctors.registerRequestView');
+Route::post('/admin-cp/doctors/send/request/to/register', [DoctorController::class, 'registerRequest'])->name('doctors.registerRequest');

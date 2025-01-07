@@ -75,7 +75,8 @@ class DoctorController extends Controller
     }
 
     public function registerRequestView(){
-        return view('doctors.registerRequest');
+        $specialties = Specialty::all();
+        return view('doctors.registerRequest',compact('specialties'));
     }
 
 
@@ -85,7 +86,8 @@ class DoctorController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' =>['required','min:10','max:10'],
-            'speciality' => ['required', 'string', 'max:255'], 
+            'age'=>['required','numeric','min:1','max:95'],
+            'specialty_id' => ['required', 'string', 'max:255'], 
         ]);
 
         $data['type'] = 'doctor';

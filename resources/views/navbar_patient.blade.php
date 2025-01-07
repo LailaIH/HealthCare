@@ -43,6 +43,39 @@
                         </nav>
                     </div>
 
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr3" aria-expanded="false" aria-controls="collapseDashboardsr3">
+                        <div class="nav-link-icon"><i class="fas fa-money-bill-wave"></i></div>
+                      My Invoices
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr3" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                            <a class="nav-link" href="{{route('patientsPanel.invoices')}}">
+                            All My Invoices
+
+                            </a>
+                         
+
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr3" aria-expanded="false" aria-controls="collapseDashboardsr3">
+                        <div class="nav-link-icon"><i class="fas fa-user"></i></div>
+                      My Profile Information
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr3" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                            <a class="nav-link" href="{{route('patientsPanel.editMyInformation')}}">
+                            Update my Information
+
+                            </a>
+                         
+
+                        </nav>
+                    </div>
+
+
 
 
 

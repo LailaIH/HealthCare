@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Patients;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\DoctorPatient;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
 
 class Meeting extends Controller
@@ -64,4 +65,11 @@ class Meeting extends Controller
         $schedule->delete();
         return redirect()->back()->withErrors(['fails'=>'schedule was successfully deleted']);
     }
+
+    //show treatment for finished meeting
+    public function showTreatment($id){
+
+        $treatment = Treatment::findOrFail($id); 
+        return view('patientsPanel.fullTreatment',compact('treatment')); 
+  }
 }

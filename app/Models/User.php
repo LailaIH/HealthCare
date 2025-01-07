@@ -27,6 +27,7 @@ class User extends Authenticatable
         'type',
         'status',
         'documents',
+        'specialty_id',
     ];
 
     /**

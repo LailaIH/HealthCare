@@ -46,6 +46,7 @@
                                         <th>Time</th>
                                         <th>Status</th>
                                         <th></th>
+                                        <th></th>
 
                                         
                                     
@@ -92,6 +93,12 @@
                             
                                         </td>
                                     @endif
+
+                                    <td>
+                                        @if($schedule->status==='finished')
+                                            <a class="btn btn-success btn-sm" href="{{route('meetings.showTreatment',$schedule->treatment->id)}}">show treatment</a>
+                                        @endif
+                                    </td>
                                             
                       
 

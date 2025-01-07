@@ -20,6 +20,11 @@
 
                         <div class="alert alert-success m-3" role="alert">{{ session('success') }}</div>
                         @endif
+
+                        @if (session('done'))
+
+                            <div class="alert alert-success m-3" role="alert">{{ session('done') }}</div>
+                        @endif
                         @if ($errors->has('fail'))
                             <div class="alert alert-danger m-3">
                                 {{ $errors->first('fail') }}

@@ -50,6 +50,7 @@
                                         
                                         
                                         <th>Patient's Document</th>
+                                        <th></th>
                                         
 
                                     </tr>
@@ -80,6 +81,10 @@
                                         @else
                                         No document
                                         @endif
+                                    </td>
+
+                                    <td>
+                                        <a href="{{route('doctorsPanel.sendEmailView',$request->patient->user->id)}}" class="btn btn-primary btn-sm">Send email</a>
                                     </td>
 
                                         </tr>

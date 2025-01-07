@@ -4,7 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorPatientController;
+use App\Http\Controllers\Doctors\DoctorProfile;
 use App\Http\Controllers\Doctors\PatientRequests;
+use App\Http\Controllers\Doctors\PatientSendEmail;
+use App\Http\Controllers\Doctors\SendEmail;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Patients\ExploreCategories;
 use App\Http\Controllers\Patients\Invoices;
@@ -35,12 +39,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // doctor routes 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'doctor'])->group(function () {
 
     Route::get('/doctor-panel', function(){
 
         return view('doctor-main');
-    });
+    })->name('doctors.panel');
 
     Route::get('/doctor-cp/pendingRequests', [PatientRequests::class, 'pendingRequests'])->name('doctorsPanel.pendingRequests');
     Route::get('/doctor-cp/approvedRequests', [PatientRequests::class, 'approvedRequests'])->name('doctorsPanel.approvedRequests');
@@ -55,6 +59,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/doctor-cp/patient/docs/{id}', [PatientRequests::class, 'showDocuments'])->name('doctorsPanel.showDocuments');
 
 
+    //update profile
+    Route::get('/doctor-cp/profile', [DoctorProfile::class, 'editMyInformation'])->name('doctorsPanel.editMyInformation');
+    Route::put('/doctor-cp/updateInfo', [DoctorProfile::class, 'updateMyInformation'])->name('doctorsPanel.updateMyInformation');
+
+    //send email
+    Route::get('/doctor-cp/sendEmail/{id}', [PatientSendEmail::class, 'sendEmailView'])->name('doctorsPanel.sendEmailView');
+    Route::post('/doctor-cp/dTo/sending/{id}', [PatientSendEmail::class, 'doctorSendEmail'])->name('doctorsPanel.EmailSent');
 
 
 });
@@ -62,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 // patient routes 
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'patient'])->group(function () {
 
         Route::get('/patient-panel', function(){
 
@@ -94,7 +105,7 @@ Route::middleware(['auth'])->group(function () {
 
 // admin routes 
 
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
 
 
         Route::get('/admin', function(){
@@ -156,6 +167,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin-cp/full-treatment/{id}', [DoctorPatientController::class, 'fullTreatment'])->name('meetings.fullTreatment');
 
 
+        //invoices
+        Route::get('/admin-cp/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/admin-cp/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
+        Route::post('/admin-cp/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
+        Route::get('/admin-cp/invoices/edit/{id}', [InvoiceController::class, 'edit'])->name('invoices.edit');
+        Route::put('/admin-cp/invoices/update/{id}', [InvoiceController::class, 'update'])->name('invoices.update');
+        Route::delete('/admin-cp/invoices/delete/{id}', [InvoiceController::class, 'delete'])->name('invoices.delete');
 
 
 });

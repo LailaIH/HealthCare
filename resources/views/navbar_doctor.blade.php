@@ -6,9 +6,6 @@
                     <div class="sidenav-menu-heading">Control Panel Pages</div>
 
 
-        
-
-                    <!-- new -->
                     <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr2" aria-expanded="false" aria-controls="collapseDashboardsr2">
                         <div class="nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                         Requested Appointments
@@ -55,7 +52,21 @@
 
                  
 
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr4" aria-expanded="false" aria-controls="collapseDashboardsr4">
+                        <div class="nav-link-icon"><i class="fas fa-user"></i></div>
+                      My Profile Information
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr4" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                            <a class="nav-link" href="{{route('doctorsPanel.editMyInformation')}}">
+                            Update my Information
 
+                            </a>
+                         
+
+                        </nav>
+                    </div>
 
 
 

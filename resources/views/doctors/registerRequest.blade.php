@@ -49,7 +49,7 @@
                         <div class="row mb-3">
                             <label for="age" class="col-md-4 col-form-label text-md-end">Age</label>
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control" name="age" value="{{ old('age') }}" required autofocus>
+                                <input  id="age" type="number" class="form-control" name="age" value="{{ old('age') }}" required autofocus>
                             </div>
                         </div>
 

@@ -179,6 +179,28 @@
                     </div>
 
 
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr8" aria-expanded="false" aria-controls="collapseDashboardsr8">
+                        <div class="nav-link-icon"><i class="fas fa-money-bill-wave"></i></div>
+                       Invoices
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDashboardsr8" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                            <a class="nav-link" href="{{route('invoices.index')}}">
+                                All Invoices
+
+                            </a>
+
+                            <a class="nav-link" href="{{route('invoices.create')}}">
+                                New Invoice
+
+                            </a>
+               
+
+                        </nav>
+                    </div>
+
+
         
 
 

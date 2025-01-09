@@ -85,10 +85,11 @@
 
                                     @if($schedule->status==='pending')        
                                         <td>
-                                          <form method="post" action="{{route('patientsPanel.deleteMeeting')}}">
+                                          <form method="post" action="{{route('patientsPanel.deleteMeeting',$schedule->id)}}">
                                             @csrf 
                                             @method('DELETE')
-                                            <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+                                            <button class="btn btn-danger btn-xs" type="submit"
+                                            onclick="return confirm('Are you sure you want to delete this request?');">Delete</button>
                                           </form>
                             
                                         </td>

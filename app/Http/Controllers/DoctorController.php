@@ -101,4 +101,10 @@ class DoctorController extends Controller
 
 
     }
+
+    public function removeAccount($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->withErrors(['fail','doctor was removed']);
+    }
 }

@@ -120,6 +120,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin-cp/patients/edit/{id}', [PatientController::class, 'edit'])->name('patients.edit');
         Route::put('/admin-cp/patients/update/{id}', [PatientController::class, 'update'])->name('patients.update');
         Route::delete('/admin-cp/patients/delete/{id}', [PatientController::class, 'removeAccount'])->name('patients.delete');
+        Route::get('/admin-cp/patient/docs/{id}', [PatientController::class, 'showDocuments'])->name('patients.showDocuments');
 
 
 

@@ -46,6 +46,7 @@
                                         <th>Is Online</th>
                                         <th></th>
                                         <th></th>
+                                        <th></th>
                                         
 
                                     </tr>
@@ -77,6 +78,14 @@
                                         
                                         
                                         </td>
+
+                                   <td>
+                                        @if(isset($patient->documents))
+                                            <a href="{{ route('patients.showDocuments', ['id' => $patient->id]) }}?{{ \Carbon\Carbon::now()->timestamp }}" class="btn btn-success btn-sm text-white" target="_blank">Download Document</a>
+                                        @else
+                                        No document
+                                        @endif
+                                    </td>
 
                                         <td>
                                             <form method="post" action="{{route('patients.delete',$patient->user->id)}}">

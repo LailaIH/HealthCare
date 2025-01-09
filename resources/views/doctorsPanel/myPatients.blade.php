@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients approved meeting requests list
+                    <div class="card-header">My Patients
                    
                     </div>
                         @if (session('success'))

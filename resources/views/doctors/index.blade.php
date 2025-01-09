@@ -45,7 +45,8 @@
                                         <th>Doctor's Specialty</th>
                                         <th>Phone</th>
                                         <th>Is Online</th>
-                                        <th>Actions</th>
+                                        <th></th>
+                                        <th></th>
                                         
 
                                     </tr>
@@ -78,6 +79,17 @@
 
                                         
                                         
+                                        </td>
+
+                                       <td>
+                                            <form method="post" action="{{route('doctors.delete',$doctor->user->id)}}">
+                                                @csrf 
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit" 
+                                                        onclick="return confirm('Are you sure you want to delete this doctor?');">
+                                                        Delete
+                                                </button> 
+                                                </form>
                                         </td>
 
                                         </tr>

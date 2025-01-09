@@ -59,12 +59,12 @@
                         </nav>
                     </div>
 
-                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr3" aria-expanded="false" aria-controls="collapseDashboardsr3">
+                    <a class="nav-link collapsed" href="/!#" data-toggle="collapse" data-target="#collapseDashboardsr33" aria-expanded="false" aria-controls="collapseDashboardsr33">
                         <div class="nav-link-icon"><i class="fas fa-user"></i></div>
                       My Profile Information
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseDashboardsr3" data-parent="#accordionSidenav">
+                    <div class="collapse" id="collapseDashboardsr33" data-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                             <a class="nav-link" href="{{route('patientsPanel.editMyInformation')}}">
                             Update my Information

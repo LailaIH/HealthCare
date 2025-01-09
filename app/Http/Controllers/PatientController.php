@@ -118,4 +118,19 @@ class PatientController extends Controller
         $user->delete();
         return redirect()->back()->withErrors(['fail','patient was removed']);
     }
+
+            public function showDocuments($id){
+            $patient = Patient::where('id', $id)->firstOrFail();
+            if(!isset($patient->documents)){
+                abort(404);
+            }
+            $document = public_path('patientDocuments/'.$patient->documents);
+            if (!file_exists($document)) {
+                abort(404);
+            }
+    
+            return response()->file($document);
+    
+        
+        }
 }

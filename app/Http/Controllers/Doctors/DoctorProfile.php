@@ -12,7 +12,7 @@ class DoctorProfile extends Controller
         $user = auth()->user();
         $doctor = $user->doctor;
 
-        return view('DoctorsPanel.editMyInformation',compact('user','doctor'));
+        return view('doctorsPanel.editMyInformation',compact('user','doctor'));
     }
 
     public function updateMyInformation(Request $request){

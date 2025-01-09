@@ -13,7 +13,7 @@
                     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
                     <div class="card">
-                    <div class="card-header">Patients List
+                    <div class="card-header">Admins List
                    
                     </div>
                         @if (session('success'))
@@ -44,7 +44,7 @@
                                         
                                         <th>Phone</th>
                                         <th>Is Online</th>
-                                        <th>Actions</th>
+                                        <th></th>
                                         
 
                                     </tr>
@@ -67,10 +67,11 @@
                                             </td>
                                             
                                             <td>
+                                        @if(auth()->user()->id === $admin->id)
                                             <a class="btn btn-primary btn-sm" href="{{route('admins.edit' , $admin->id )}}" >   
                                             Edit
                                               </a>
-                                        
+                                        @endif
 
                                         
                                         

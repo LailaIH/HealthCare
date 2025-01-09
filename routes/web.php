@@ -89,7 +89,7 @@ Route::middleware(['auth', 'patient'])->group(function () {
         Route::get('/patient-cp/my/schedules', [Meeting::class, 'mySchedules'])->name('patientsPanel.mySchedules');
         Route::get('/patient-cp/show/request-meeting/view/{id}', [Meeting::class, 'showRequestMeetingView'])->name('patientsPanel.showRequestMeetingView');
         Route::put('/patient-cp/request/meeting/{id}', [Meeting::class, 'requestMeeting'])->name('patientsPanel.requestMeeting');
-        Route::delete('/patient-cp/delete/schedule', [Meeting::class, 'deleteMeeting'])->name('patientsPanel.deleteMeeting');
+        Route::delete('/patient-cp/delete/schedule/{id}', [Meeting::class, 'deleteMeeting'])->name('patientsPanel.deleteMeeting');
         Route::get('/patient-cp/full-treatment/{id}', [Meeting::class, 'showTreatment'])->name('meetings.showTreatment');
 
         //invoices

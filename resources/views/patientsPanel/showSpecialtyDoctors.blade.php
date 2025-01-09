@@ -69,9 +69,11 @@
                                      
                                             
                                             <td>
+                                                 @if($doctor->user->is_online)
                                             <a class="btn btn-primary btn-sm" href="{{route('patientsPanel.showRequestMeetingView',$doctor->id)}}" >   
                                             Request a meeting
                                               </a>
+                                                @endif
                            
                                         </td>
 

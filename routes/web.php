@@ -119,6 +119,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('/admin-cp/patients/store', [PatientController::class, 'store'])->name('patients.store');
         Route::get('/admin-cp/patients/edit/{id}', [PatientController::class, 'edit'])->name('patients.edit');
         Route::put('/admin-cp/patients/update/{id}', [PatientController::class, 'update'])->name('patients.update');
+        Route::put('/admin-cp/patients/delete/{id}', [PatientController::class, 'removeAccount'])->name('patients.delete');
 
 
 
@@ -157,6 +158,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('/admin-cp/doctors/store', [DoctorController::class, 'store'])->name('doctors.store');
         Route::get('/admin-cp/doctors/edit/{id}', [DoctorController::class, 'edit'])->name('doctors.edit');
         Route::put('/admin-cp/doctors/update/{id}', [DoctorController::class, 'update'])->name('doctors.update');
+        Route::delete('/admin-cp/doctors/delete/{id}', [DoctorController::class, 'removeAccount'])->name('doctors.delete');
+
 
 
         //doctors-patient meetings

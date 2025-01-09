@@ -51,7 +51,7 @@
 <body class="nav-fixed">
 <script type="module"></script>
 <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-    <a class="navbar-brand" href="/home">{{--{{ \App\Setting::where('key', '=', 'site_name')->first()->value }}--}}Control Panel</a>
+    <a class="navbar-brand" href="/patient-panel">{{--{{ \App\Setting::where('key', '=', 'site_name')->first()->value }}--}}Control Panel</a>
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
     {{--<form class="form-inline mr-auto d-none d-md-block">
         <div class="input-group input-group-joined input-group-solid">
